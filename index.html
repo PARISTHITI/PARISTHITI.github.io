@@ -175,6 +175,24 @@
       }
     }
 
+    /* Streaming Platforms Styling */
+    .platforms {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .platforms img {
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .platforms img:hover {
+      transform: scale(1.1);
+    }
+
     /* Responsive Design */
     @media screen and (max-width: 768px) {
       h1 {
@@ -193,6 +211,10 @@
       a {
         font-size: 1.2em;
       }
+      .platforms img {
+        width: 40px;
+        height: 40px;
+      }
     }
   </style>
 </head>
@@ -201,7 +223,12 @@
   <div class="content">
     <h1>Paristithi</h1>
     <p><img class="album-cover" src="./album-cover.JPG" alt="Album Cover" /></p>
-    <a href="https://link-to-album.com" target="_blank">Listen to the Album</a>
+    <div class="platforms">
+      <a href="https://music.apple.com" target="_blank"><img src="apple-music-logo.png" alt="Apple Music" /></a>
+      <a href="https://spotify.com" target="_blank"><img src="spotify-logo.png" alt="Spotify" /></a>
+      <a href="https://music.amazon.com" target="_blank"><img src="amazon-music-logo.png" alt="Amazon Music" /></a>
+      <a href="https://audiomack.com" target="_blank"><img src="audiomack-logo.png" alt="Audiomack" /></a>
+    </div>
     <h2>Track List</h2>
     <ol>
       <li>SHUNYATA</li>
@@ -234,32 +261,3 @@
       const imageData = context.getImageData(0, 0, image.width, image.height);
       const pixels = imageData.data;
       let r = 0, g = 0, b = 0;
-      const length = pixels.length;
-
-      // Average color calculation
-      for (let i = 0; i < length; i += 4) {
-        r += pixels[i]; // Red
-        g += pixels[i + 1]; // Green
-        b += pixels[i + 2]; // Blue
-      }
-
-      r = Math.floor(r / (length / 4));
-      g = Math.floor(g / (length / 4));
-      b = Math.floor(b / (length / 4));
-
-      return `rgb(${r}, ${g}, ${b})`;
-    }
-
-    // Apply the dominant color to the "Listen to the Album" link
-    albumCover.onload = function () {
-      const dominantColor = getDominantColor(albumCover);
-      albumLink.style.textShadow = `0 0 20px ${dominantColor}, 0 0 30px ${dominantColor}, 0 0 40px ${dominantColor}`;
-    };
-
-    // Optionally pause the background video once it's loaded
-    window.onload = function() {
-      document.querySelector('.background-video').pause();
-    };
-  </script>
-</body>
-</html>
