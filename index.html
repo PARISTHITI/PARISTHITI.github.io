@@ -97,23 +97,20 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
       margin-top: 30px;
-      padding: 0;
     }
 
     .stream-link {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       width: 250px;
       background-color: #1a1a1a;
       padding: 15px;
       border-radius: 10px;
+      margin: 10px;
       transition: transform 0.3s ease-in-out;
       box-shadow: 0 5px 15px rgba(0, 150, 255, 0.1);
-      text-align: left;
-      max-width: 100%;
     }
 
     .stream-link:hover {
@@ -124,16 +121,14 @@
     .stream-link img {
       height: 40px;
       width: 40px;
-      margin-right: 15px;
-      object-fit: contain;
     }
 
     .stream-link p {
+      flex: 1;
+      margin-left: 15px;
       font-size: 1.2em;
       color: white;
       text-transform: capitalize;
-      margin-right: 15px;
-      flex-grow: 1;
     }
 
     .stream-link a {
@@ -186,44 +181,8 @@
     }
 
     @media screen and (max-width: 768px) {
-      .content {
-        padding: 30px;
-      }
-
-      h1 {
-        font-size: 2.8em;
-      }
-
-      h2 {
-        font-size: 2em;
-      }
-
-      .album-cover {
-        width: 280px;
-        height: 280px;
-      }
-
-      .stream-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
-
       .stream-link {
-        width: 100%;
-        text-align: center;
-      }
-
-      .stream-link img {
-        margin: 0 15px;
-      }
-
-      ol {
-        font-size: 1em;
-      }
-
-      ol li {
-        font-size: 1.1em;
+        width: 90%;
       }
     }
   </style>
@@ -241,7 +200,7 @@
         <a href="#" target="_blank">Play</a>
       </div>
       <div class="stream-link">
-        <img src="Spotify-Logo.png" alt="Spotify">
+        <img src="Spotify-logo.png" alt="Spotify">
         <p>Spotify</p>
         <a href="#" target="_blank">Play</a>
       </div>
@@ -256,7 +215,6 @@
         <a href="#" target="_blank">Play</a>
       </div>
     </div>
-
     <h2>Track List</h2>
     <ol>
       <li>SHUNYATA</li>
