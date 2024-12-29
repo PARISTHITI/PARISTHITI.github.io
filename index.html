@@ -6,6 +6,14 @@
   <title>Paristithi</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Global Reset for all elements */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
     /* Body Styling */
     body {
       margin: 0;
@@ -17,13 +25,7 @@
       height: 100vh;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      transition: all 0.5s ease-in-out;
-    }
-
+    /* Page Content Centering */
     .content {
       text-align: center;
       position: relative;
@@ -31,6 +33,7 @@
       padding: 50px 20px;
     }
 
+    /* Main Header */
     h1 {
       font-size: 4em;
       font-weight: 600;
@@ -42,6 +45,7 @@
       animation: fadeIn 1s ease-out;
     }
 
+    /* Sub Header */
     h2 {
       font-size: 2.5em;
       margin: 20px 0;
@@ -52,6 +56,7 @@
       animation: fadeIn 1.2s ease-out;
     }
 
+    /* Paragraph for description */
     p {
       font-size: 1.2em;
       color: #b3b3b3;
@@ -59,6 +64,7 @@
       animation: fadeIn 1.5s ease-out;
     }
 
+    /* Album cover Styling */
     .album-cover {
       width: 350px;
       height: 350px;
@@ -72,42 +78,24 @@
       height: auto;
     }
 
-    ol {
-      text-align: center;
-      display: inline-block;
-      font-size: 1.4em;
-      list-style-type: none;
-      margin: 50px auto;
-      padding: 0;
-      max-width: 600px;
-      animation: fadeIn 1.8s ease-out;
-      font-family: 'Roboto', sans-serif;
-      color: #f0f0f0;
-    }
-
-    ol li {
-      margin: 18px 0;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      line-height: 2;
-      font-size: 1.2em;
-      text-align: center;
-    }
-
+    /* Container for Streaming Links (Horizontal) */
     .stream-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
       margin-top: 30px;
+      animation: fadeIn 2s ease-out;
     }
 
+    /* Individual Streaming Link Style */
     .stream-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 300px;
+      width: 250px;
       background-color: #1a1a1a;
       padding: 15px;
       border-radius: 10px;
-      margin: 10px auto;
       transition: transform 0.3s ease-in-out;
       box-shadow: 0 5px 15px rgba(0, 150, 255, 0.1);
     }
@@ -146,6 +134,7 @@
       background-color: rgba(0, 150, 255, 1);
     }
 
+    /* Animations for Elements */
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -179,19 +168,61 @@
       }
     }
 
+    /* Responsiveness for smaller screens */
     @media screen and (max-width: 768px) {
       .stream-link {
         width: 90%;
       }
+
+      h1 {
+        font-size: 3.5em;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      .album-cover {
+        width: 280px;
+        height: 280px;
+      }
+
+      /* Adjust the horizontal layout for smaller screens */
+      .stream-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+
+    /* Adding more tracklist styles for more appeal */
+    ol li:nth-child(odd) {
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    ol li:nth-child(even) {
+      background-color: #222222;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    /* Adding a container around the tracklist and stream links */
+    .track-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   </style>
 </head>
 <body>
   <div class="content">
+    <!-- Main Heading -->
     <h1>Paristithi</h1>
     <p><img class="album-cover" src="./album-cover.JPG" alt="Album Cover"></p>
 
-    <!-- Music Streaming Links -->
+    <!-- Music Streaming Links (Horizontal Layout) -->
     <div class="stream-links">
       <div class="stream-link">
         <img src="apple-music-logo.png" alt="Apple Music" aria-label="Apple Music">
@@ -199,14 +230,14 @@
         <a href="https://music.apple.com/your-link" target="_blank" aria-label="Play on Apple Music">Play</a>
       </div>
       <div class="stream-link">
-        <img src="audiomack-logo.png" alt="Audiomack" aria-label="Audiomack">
-        <p>Audiomack</p>
-        <a href="https://www.audiomack.com/your-link" target="_blank" aria-label="Play on Audiomack">Play</a>
-      </div>
-      <div class="stream-link">
         <img src="spotify-logo.png" alt="Spotify" aria-label="Spotify">
         <p>Spotify</p>
         <a href="https://open.spotify.com/your-link" target="_blank" aria-label="Play on Spotify">Play</a>
+      </div>
+      <div class="stream-link">
+        <img src="audiomack-logo.png" alt="Audiomack" aria-label="Audiomack">
+        <p>Audiomack</p>
+        <a href="https://www.audiomack.com/your-link" target="_blank" aria-label="Play on Audiomack">Play</a>
       </div>
       <div class="stream-link">
         <img src="amazon-music-logo.png" alt="Amazon Music" aria-label="Amazon Music">
@@ -215,21 +246,24 @@
       </div>
     </div>
 
-    <h2>Track List</h2>
-    <ol>
-      <li>SHUNYATA</li>
-      <li>PANKH</li>
-      <li>AASHA</li>
-      <li>RAQT</li>
-      <li>INAAM</li>
-      <li>SHAQ</li>
-      <li>TANAV</li>
-      <li>HISAB</li>
-      <li>ISHQ</li>
-      <li>TIRYAG</li>
-      <li>INTEZAR</li>
-      <li>PURNATA</li>
-    </ol>
+    <!-- Track List Section -->
+    <div class="track-container">
+      <h2>Track List</h2>
+      <ol>
+        <li>SHUNYATA</li>
+        <li>PANKH</li>
+        <li>AASHA</li>
+        <li>RAQT</li>
+        <li>INAAM</li>
+        <li>SHAQ</li>
+        <li>TANAV</li>
+        <li>HISAB</li>
+        <li>ISHQ</li>
+        <li>TIRYAG</li>
+        <li>INTEZAR</li>
+        <li>PURNATA</li>
+      </ol>
+    </div>
   </div>
 </body>
 </html>
