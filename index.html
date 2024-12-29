@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paristhiti</title>
+  <title>Paristithi</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     /* Body Styling */
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background-color: #121212; /* Dark background for a luxurious feel */
-      color: #f0f0f0; /* Soft white text */
-      overflow-y: scroll; /* Allow vertical scrolling */
+      background-color: #121212;
+      color: #f0f0f0;
+      overflow-y: scroll;
       line-height: 1.6;
       height: 100vh;
     }
 
-    /* Universal alignment */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -25,7 +24,6 @@
       transition: all 0.5s ease-in-out;
     }
 
-    /* Main Content Styling */
     .content {
       text-align: center;
       position: relative;
@@ -33,7 +31,6 @@
       padding: 50px 20px;
     }
 
-    /* Elegant Heading Styles */
     h1 {
       font-size: 4em;
       font-weight: 600;
@@ -62,7 +59,6 @@
       animation: fadeIn 1.5s ease-out;
     }
 
-    /* Album Cover Styling */
     .album-cover {
       width: 350px;
       height: 350px;
@@ -72,32 +68,10 @@
       animation: albumCoverAnimation 2s ease-in-out forwards, glowAnimation 3s ease-in-out infinite alternate;
       box-shadow: 0 0 0 rgba(0, 150, 255, 0);
       transform: scale(0.8);
+      max-width: 100%;
+      height: auto;
     }
 
-    /* Animation for Album Cover */
-    @keyframes albumCoverAnimation {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-        box-shadow: 0 0 0 rgba(0, 150, 255, 0);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-        box-shadow: 0 0 30px 15px rgba(0, 150, 255, 0.7);
-      }
-    }
-
-    @keyframes glowAnimation {
-      0% {
-        box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
-      }
-      100% {
-        box-shadow: 0 0 40px rgba(0, 150, 255, 0.7), 0 0 60px rgba(0, 150, 255, 0.4);
-      }
-    }
-
-    /* Track List Styling */
     ol {
       text-align: center;
       display: inline-block;
@@ -121,49 +95,57 @@
       text-align: center;
     }
 
-    /* Interactive Link with Ambient Glow and Hover Expansion */
-    a {
-      font-size: 1.6em;
-      color: white;
-      text-decoration: none;
-      display: block;
+    .stream-links {
       margin-top: 30px;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      position: relative;
-      transition: all 0.3s ease-in-out;
-      animation: fadeIn 2s ease-out;
     }
 
-    /* Underline Effect on Hover */
-    a:after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: white;
-      transform: scaleX(0);
-      transform-origin: bottom right;
-      transition: transform 0.3s ease-out;
+    .stream-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 300px;
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px auto;
+      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 150, 255, 0.1);
     }
 
-    a:hover {
+    .stream-link:hover {
       transform: scale(1.05);
-      text-shadow: 0 0 20px rgba(0, 150, 255, 1), 0 0 30px rgba(0, 150, 255, 0.8);
-      background-color: rgba(0, 150, 255, 0.2);
-      border-color: rgba(0, 150, 255, 1);
+      box-shadow: 0 10px 30px rgba(0, 150, 255, 0.3);
     }
 
-    a:hover:after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
+    .stream-link img {
+      height: 40px;
+      width: 40px;
     }
 
-    /* Fade-in Animation */
+    .stream-link p {
+      flex: 1;
+      margin-left: 15px;
+      font-size: 1.2em;
+      color: white;
+      text-transform: capitalize;
+    }
+
+    .stream-link a {
+      background-color: rgba(0, 150, 255, 0.7);
+      color: white;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.9em;
+      text-decoration: none;
+      transition: all 0.3s ease-in;
+    }
+
+    .stream-link a:hover {
+      background-color: rgba(0, 150, 255, 1);
+    }
+
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -175,60 +157,64 @@
       }
     }
 
-    /* Streaming Platforms Styling */
-    .platforms {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
+    @keyframes albumCoverAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+        box-shadow: 0 0 0 rgba(0, 150, 255, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 30px 15px rgba(0, 150, 255, 0.7);
+      }
     }
 
-    .platforms img {
-      width: 50px;
-      height: 50px;
-      transition: transform 0.3s ease-in-out;
+    @keyframes glowAnimation {
+      0% {
+        box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 40px rgba(0, 150, 255, 0.7), 0 0 60px rgba(0, 150, 255, 0.4);
+      }
     }
 
-    .platforms img:hover {
-      transform: scale(1.1);
-    }
-
-    /* Responsive Design */
     @media screen and (max-width: 768px) {
-      h1 {
-        font-size: 2.5em;
-      }
-      h2 {
-        font-size: 1.8em;
-      }
-      .album-cover {
-        width: 300px;
-        height: 300px;
-      }
-      ol li {
-        font-size: 1em;
-      }
-      a {
-        font-size: 1.2em;
-      }
-      .platforms img {
-        width: 40px;
-        height: 40px;
+      .stream-link {
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Main Content -->
   <div class="content">
-    <h1>Paristhiti</h1>
-    <p><img class="album-cover" src="./album-cover.JPG" alt="Album Cover" /></p>
-    <div class="platforms">
-      <a href="https://music.apple.com" target="_blank"><img src="apple-music-logo.png" alt="Apple Music" /></a>
-      <a href="https://spotify.com" target="_blank"><img src="spotify-logo.png" alt="Spotify" /></a>
-      <a href="https://music.amazon.com" target="_blank"><img src="amazon-music-logo.png" alt="Amazon Music" /></a>
-      <a href="https://audiomack.com" target="_blank"><img src="audiomack-logo.png" alt="Audiomack" /></a>
+    <h1>Paristithi</h1>
+    <p><img class="album-cover" src="./album-cover.JPG" alt="Album Cover"></p>
+
+    <!-- Music Streaming Links -->
+    <div class="stream-links">
+      <div class="stream-link">
+        <img src="apple-music-logo.png" alt="Apple Music" aria-label="Apple Music">
+        <p>Apple Music</p>
+        <a href="https://music.apple.com/your-link" target="_blank" aria-label="Play on Apple Music">Play</a>
+      </div>
+      <div class="stream-link">
+        <img src="audiomack-logo.png" alt="Audiomack" aria-label="Audiomack">
+        <p>Audiomack</p>
+        <a href="https://www.audiomack.com/your-link" target="_blank" aria-label="Play on Audiomack">Play</a>
+      </div>
+      <div class="stream-link">
+        <img src="spotify-logo.png" alt="Spotify" aria-label="Spotify">
+        <p>Spotify</p>
+        <a href="https://open.spotify.com/your-link" target="_blank" aria-label="Play on Spotify">Play</a>
+      </div>
+      <div class="stream-link">
+        <img src="amazon-music-logo.png" alt="Amazon Music" aria-label="Amazon Music">
+        <p>Amazon Music</p>
+        <a href="https://music.amazon.com/your-link" target="_blank" aria-label="Play on Amazon Music">Play</a>
+      </div>
     </div>
+
     <h2>Track List</h2>
     <ol>
       <li>SHUNYATA</li>
@@ -245,19 +231,5 @@
       <li>PURNATA</li>
     </ol>
   </div>
-
-  <script>
-    // JavaScript for dynamic ambient glow effect based on album cover color
-    const albumCover = document.querySelector('.album-cover');
-    const albumLink = document.querySelector('a');
-
-    // Function to calculate the dominant color of the album cover and apply it
-    function getDominantColor(image) {
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      canvas.width = image.width;
-      canvas.height = image.height;
-      context.drawImage(image, 0, 0, image.width, image.height);
-      const imageData = context.getImageData(0, 0, image.width, image.height);
-      const pixels = imageData.data;
-      let r = 0, g = 0, b = 0;
+</body>
+</html>
