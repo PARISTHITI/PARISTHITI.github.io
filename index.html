@@ -32,40 +32,40 @@
       padding: 20px;
     }
 
-    /* Album Cover Styling (Animation on load) */
+    /* Album Cover Styling (Ambient Glow Animation) */
     .album-cover {
       width: 300px; /* Adjust size */
       height: 300px;
       margin: 20px 0;
       border-radius: 15px;
       opacity: 0;
-      animation: albumCoverAnimation 1.5s ease-in-out forwards; /* Fade in and scale up */
+      animation: albumCoverAnimation 1.5s ease-in-out forwards; /* Fade in and ambient glow */
     }
 
     @keyframes albumCoverAnimation {
       0% {
         opacity: 0;
-        transform: scale(0.8);
         box-shadow: none;
       }
       100% {
         opacity: 1;
-        transform: scale(1.05);
-        box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.6); /* Subtle glow effect */
+        box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.8); /* Ambient white glow */
       }
     }
 
     /* Link Styling */
     a {
-      color: #ffcc00;
+      color: white;
       text-decoration: none;
       font-size: 1.2em;
       margin-top: 10px;
       display: block;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Soft glow effect on hover */
+      transition: text-shadow 0.3s ease-in-out;
     }
 
     a:hover {
-      text-decoration: underline;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 1); /* Stronger glow on hover */
     }
 
     /* Track List Styling */
@@ -107,7 +107,7 @@
 
   <!-- Main Content -->
   <div class="content">
-    <h1>Paristithi</h1>
+    <h1>Album Title: Paristithi</h1>
     <p><img class="album-cover" src="./album-cover.JPG" alt="Album Cover" /></p>
     <a href="https://link-to-album.com" target="_blank">Listen to the Album</a>
     <h2>Track List:</h2>
