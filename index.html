@@ -40,6 +40,7 @@
       object-fit: cover;
       z-index: -1;
       filter: brightness(40%);
+      transition: opacity 2s ease-out; /* Smooth fade out effect */
     }
 
     /* Main Content Styling */
@@ -127,7 +128,7 @@
       text-align: center;
     }
 
-    /* Link Styling (Luxurious and Glowing Effect) */
+    /* Interactive Link with Ambient Glow */
     a {
       font-size: 1.6em;
       color: white;
@@ -139,10 +140,15 @@
       text-transform: uppercase;
       transition: text-shadow 0.5s ease-in-out;
       animation: fadeIn 2s ease-out;
+      padding: 10px 20px;
+      border: 2px solid transparent;
+      border-radius: 5px;
     }
 
     a:hover {
       text-shadow: 0 0 20px rgba(0, 150, 255, 1), 0 0 30px rgba(0, 150, 255, 0.8);
+      background-color: rgba(0, 150, 255, 0.2);
+      border-color: rgba(0, 150, 255, 1);
     }
 
     /* Fade-in Animation */
@@ -242,6 +248,11 @@
     albumCover.onload = function () {
       const dominantColor = getDominantColor(albumCover);
       albumLink.style.textShadow = `0 0 20px ${dominantColor}, 0 0 30px ${dominantColor}, 0 0 40px ${dominantColor}`;
+    };
+
+    // Optionally pause the background video once it's loaded
+    window.onload = function() {
+      document.querySelector('.background-video').pause();
     };
   </script>
 </body>
