@@ -32,27 +32,51 @@
       padding: 20px;
     }
 
-    /* Album Cover Styling */
+    /* Album Cover Styling (Animation on load) */
     .album-cover {
       width: 300px; /* Adjust size */
       height: 300px;
       margin: 20px 0;
       border-radius: 15px;
-      transition: transform 1s ease-in-out, box-shadow 0.3s ease-in-out;
+      opacity: 0;
+      animation: albumCoverAnimation 1.5s ease-in-out forwards; /* Fade in and scale up */
     }
 
-    .album-cover:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.8);
+    @keyframes albumCoverAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+        box-shadow: none;
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.6); /* Subtle glow effect */
+      }
+    }
+
+    /* Link Styling */
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin-top: 10px;
+      display: block;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     /* Track List Styling */
     ol {
-      text-align: left;
+      text-align: center;
       display: inline-block;
       font-size: 1.2em;
-      padding-left: 20px; /* Add padding for better alignment */
+      padding-left: 0;
       list-style-type: none; /* Remove numbers */
+      max-width: 80%; /* Limit width to avoid long lines */
+      margin: 0 auto;
     }
 
     ol li {
@@ -85,7 +109,7 @@
   <div class="content">
     <h1>Album Title: Paristithi</h1>
     <p><img class="album-cover" src="./album-cover.JPG" alt="Album Cover" /></p>
-    <p>Listen to the Album</p>
+    <a href="https://link-to-album.com" target="_blank">Listen to the Album</a>
     <h2>Track List:</h2>
     <ol>
       <li>SHUNYATA</li>
