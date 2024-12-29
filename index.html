@@ -40,6 +40,7 @@
       letter-spacing: 3px;
       text-shadow: 0 0 15px rgba(0, 150, 255, 0.8);
       animation: fadeIn 1s ease-out;
+      text-align: center;  /* Ensures proper alignment */
     }
 
     h2 {
@@ -111,6 +112,7 @@
       margin: 10px;
       transition: transform 0.3s ease-in-out;
       box-shadow: 0 5px 15px rgba(0, 150, 255, 0.1);
+      flex-shrink: 0; /* Prevents shrinking on smaller screens */
     }
 
     .stream-link:hover {
@@ -180,9 +182,29 @@
       }
     }
 
+    /* Mobile Adjustments */
     @media screen and (max-width: 768px) {
+      .content {
+        padding: 30px 20px;  /* Adjust padding */
+      }
+
+      h1 {
+        font-size: 3em;  /* Slightly smaller title for better fit on mobile */
+      }
+
       .stream-link {
         width: 90%;
+        margin: 10px 0;  /* More space between items on smaller screens */
+      }
+
+      .stream-link img {
+        height: 30px;
+        width: 30px;
+      }
+
+      .album-cover {
+        width: 250px;
+        height: 250px;
       }
     }
   </style>
@@ -200,7 +222,7 @@
         <a href="#" target="_blank">Play</a>
       </div>
       <div class="stream-link">
-        <img src="Spottify-logo.jpeg" alt="Spotify">
+        <img src="Spotify-logo.jpeg" alt="Spotify">
         <p>Spotify</p>
         <a href="#" target="_blank">Play</a>
       </div>
