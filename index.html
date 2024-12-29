@@ -11,7 +11,7 @@
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #121212; /* Dark background for a luxurious feel */
       color: #f0f0f0; /* Soft white text */
-      overflow: hidden;
+      overflow-y: scroll; /* Allow vertical scrolling */
       line-height: 1.6;
     }
 
@@ -98,9 +98,9 @@
     ol {
       text-align: center;
       display: inline-block;
-      font-size: 1.2em;
+      font-size: 1.5em;
       list-style-type: none;
-      margin: 0 auto;
+      margin: 50px auto;
       padding: 0;
       max-width: 600px;
       animation: fadeIn 1.8s ease-out;
@@ -112,12 +112,13 @@
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 1px;
+      line-height: 2;
     }
 
     /* Link Styling (Luxurious with Glowing Effect) */
     a {
       font-size: 1.5em;
-      color: #00aaff; /* Elegant Blue */
+      color: white; /* White color for the link */
       text-decoration: none;
       display: block;
       margin-top: 30px;
@@ -143,6 +144,7 @@
         transform: translateY(0);
       }
     }
+
   </style>
 </head>
 <body>
@@ -173,5 +175,43 @@
       <li>PURNATA</li>
     </ol>
   </div>
+
+  <script>
+    // JavaScript for dynamic ambient glow effect based on album cover color
+    const albumCover = document.querySelector('.album-cover');
+    const albumLink = document.querySelector('a');
+
+    // Function to calculate the dominant color of the album cover and apply it
+    function getDominantColor(image) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = image.width;
+      canvas.height = image.height;
+      context.drawImage(image, 0, 0, image.width, image.height);
+      const imageData = context.getImageData(0, 0, image.width, image.height);
+      const pixels = imageData.data;
+      let r = 0, g = 0, b = 0;
+      const length = pixels.length;
+
+      // Average color calculation
+      for (let i = 0; i < length; i += 4) {
+        r += pixels[i]; // Red
+        g += pixels[i + 1]; // Green
+        b += pixels[i + 2]; // Blue
+      }
+
+      r = Math.floor(r / (length / 4));
+      g = Math.floor(g / (length / 4));
+      b = Math.floor(b / (length / 4));
+
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Apply the dominant color to the "Listen to the Album" link
+    albumCover.onload = function () {
+      const dominantColor = getDominantColor(albumCover);
+      albumLink.style.textShadow = `0 0 20px ${dominantColor}, 0 0 30px ${dominantColor}, 0 0 40px ${dominantColor}`;
+    };
+  </script>
 </body>
 </html>
