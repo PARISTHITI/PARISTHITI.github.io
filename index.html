@@ -25,24 +25,6 @@
       transition: all 0.5s ease-in-out;
     }
 
-    /* Smooth Transition */
-    h1, h2, p, ol, a {
-      transition: all 0.3s ease-in-out;
-    }
-
-    /* Background Video */
-    .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(40%);
-      transition: opacity 2s ease-out; /* Smooth fade out effect */
-    }
-
     /* Main Content Styling */
     .content {
       text-align: center;
@@ -87,10 +69,12 @@
       margin: 30px 0;
       border-radius: 15px;
       opacity: 0;
-      animation: albumCoverAnimation 2s ease-in-out forwards;
+      animation: albumCoverAnimation 2s ease-in-out forwards, glowAnimation 3s ease-in-out infinite alternate;
       box-shadow: 0 0 0 rgba(0, 150, 255, 0);
+      transform: scale(0.8);
     }
 
+    /* Animation for Album Cover */
     @keyframes albumCoverAnimation {
       0% {
         opacity: 0;
@@ -101,6 +85,15 @@
         opacity: 1;
         transform: scale(1);
         box-shadow: 0 0 30px 15px rgba(0, 150, 255, 0.7);
+      }
+    }
+
+    @keyframes glowAnimation {
+      0% {
+        box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 40px rgba(0, 150, 255, 0.7), 0 0 60px rgba(0, 150, 255, 0.4);
       }
     }
 
@@ -128,7 +121,7 @@
       text-align: center;
     }
 
-    /* Interactive Link with Ambient Glow */
+    /* Interactive Link with Ambient Glow and Hover Expansion */
     a {
       font-size: 1.6em;
       color: white;
@@ -138,17 +131,37 @@
       font-weight: 600;
       letter-spacing: 1.2px;
       text-transform: uppercase;
-      transition: text-shadow 0.5s ease-in-out;
-      animation: fadeIn 2s ease-out;
       padding: 10px 20px;
       border: 2px solid transparent;
       border-radius: 5px;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      animation: fadeIn 2s ease-out;
+    }
+
+    a:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      bottom: -5px;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
     }
 
     a:hover {
+      transform: scale(1.05);
       text-shadow: 0 0 20px rgba(0, 150, 255, 1), 0 0 30px rgba(0, 150, 255, 0.8);
       background-color: rgba(0, 150, 255, 0.2);
       border-color: rgba(0, 150, 255, 1);
+    }
+
+    a:hover:before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
     }
 
     /* Fade-in Animation */
@@ -185,12 +198,6 @@
   </style>
 </head>
 <body>
-  <!-- Background Video -->
-  <video class="background-video" autoplay muted loop>
-    <source src="./backgroung.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
   <!-- Main Content -->
   <div class="content">
     <h1>Paristithi</h1>
