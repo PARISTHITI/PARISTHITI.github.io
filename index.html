@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paristhiti Album Showcase</title>
+    <style>
+        /* Background color animation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            animation: colorShift 10s infinite alternate;
+        }
+
+        @keyframes colorShift {
+            0% {
+                background: #000428; /* Midnight blue */
+            }
+            50% {
+                background: #004e92; /* Twilight blue */
+            }
+            100% {
+                background: #3a7bd5; /* Cerulean blue */
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            width: 80%; /* Adjust width if necessary */
+            margin: 0 auto; /* Center the container */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-align: center; /* Ensure title is centered */
+        }
+
+        .link-image-container {
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            align-items: center; /* Center items horizontally */
+            margin-top: 20px; /* Add spacing from the header */
+        }
+
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin-bottom: 15px; /* Spacing between link and image */
+            font-size: 1.2em; /* Increase the size for visibility */
+            display: inline-block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center; /* Ensure the track list is centered */
+        }
+
+        li {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Album Title: Paristhiti</h1>
+        <div class="link-image-container">
+            <a href="https://link-to-album.com" target="_blank">Listen to the Album</a>
+            <img src="album-cover.jpg" alt="Album Cover">
+        </div>
+        <h2>Track List:</h2>
+        <ul>
+            <li>1. SHUNYATA</li>
+            <li>2. PANKH</li>
+            <li>3. AASHA</li>
+            <li>4. RAQT</li>
+            <li>5. INAAM</li>
+            <li>6. SHAQ</li>
+            <li>7. TANAV</li>
+            <li>8. HISAB</li>
+            <li>9. ISHQ</li>
+            <li>10. TIRYAG</li>
+            <li>11. INTEZAR</li>
+            <li>12. PURNATA</li>
+        </ul>
+    </div>
+</body>
+</html>
