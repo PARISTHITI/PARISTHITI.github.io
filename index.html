@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Album | Paristhiti</title>
   <style>
     /* Reset and Global Styles */
@@ -15,39 +15,64 @@
 
     body {
       background: black;
-      overflow-y: auto; /* Enables scrolling */
-      height: 100vh;
+      overflow-x: hidden; /* No horizontal scroll */
+      margin: 0;
+      min-height: 100vh;
     }
 
-    /* Blurred Background */
-    .background {
-      position: fixed;
+    /* Hero Section (80% screen) with Blurred Parallax BG */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 80vh; /* Occupies 80% of the screen height */
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('album-cover.JPG') center/cover no-repeat;
-      filter: blur(20px);
+      /* Larger background to appear zoomed in */
+      background: url('album-cover.JPG') center/150% no-repeat;
+      filter: blur(20px) brightness(0.5);
+      transform: translateY(0);
+      transition: transform 0.1s linear;
       z-index: -1;
     }
 
-    /* Content Wrapper */
-    .content {
+    .hero-content {
+      /* Center the album cover vertically & horizontally within the hero */
+      position: relative;
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 50px 20px;
+      justify-content: center;
     }
 
-    /* Album Cover */
-    .album-cover img {
+    .album-cover {
       width: 300px;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+      z-index: 1;
     }
 
-    /* Album Name (Small Font) */
+    /* The rest of the page content (below hero) */
+    .main-content {
+      position: relative;
+      width: 100%;
+      min-height: 20vh; /* Remaining 20% + scrollable area */
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: black; /* or any color you like */
+    }
+
+    /* Album Name & Subheading */
     .album-name {
       margin-top: 20px;
       font-size: 1.5rem;
@@ -55,19 +80,17 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+      margin-bottom: 8px;
     }
-
-    /* Subheading for "Choose music service" */
     .choose-service {
-      margin-top: 8px;
       font-size: 1.1rem;
       color: #b3b3b3;
       letter-spacing: 1px;
+      margin-bottom: 30px;
     }
 
-    /* White Box for Streaming Services */
+    /* White Box with Services */
     .streaming-box {
-      margin-top: 30px;
       padding: 20px;
       background: white;
       border-radius: 12px;
@@ -79,7 +102,7 @@
       gap: 15px;
     }
 
-    /* Each Service Link Row */
+    /* Streaming Links */
     .streaming-link {
       display: flex;
       align-items: center;
@@ -90,10 +113,9 @@
       color: black;
       font-size: 18px;
       transition: 0.3s ease-in-out;
-      justify-content: space-between; /* Spread out the name + button */
+      justify-content: space-between;
     }
 
-    /* Left Side: Icon + Name */
     .service-left {
       display: flex;
       align-items: center;
@@ -110,10 +132,10 @@
       text-transform: capitalize;
     }
 
-    /* Right Side: Play Button */
+    /* Monochrome Play Button */
     .play-button {
-      background-color: #007BFF;
-      color: #fff;
+      background-color: #ccc; /* Light grey */
+      color: #333;           /* Darker grey text */
       text-transform: uppercase;
       padding: 6px 10px;
       border-radius: 5px;
@@ -124,51 +146,36 @@
     }
 
     .play-button:hover {
-      background-color: #0056b3;
+      background-color: #bbb; /* Slightly darker grey on hover */
     }
 
     .streaming-link:hover {
       background: #ddd;
     }
 
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
+    /* Responsive Adjustments */
     @media screen and (max-width: 768px) {
-      .content {
-        padding: 30px 20px;
-      }
-
-      .album-cover img {
+      .album-cover {
         width: 250px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="background"></div> <!-- Blurred Background -->
+  <!-- HERO SECTION (80% screen) -->
+  <div class="hero-section">
+    <div class="hero-bg"></div> <!-- Blurred, bigger BG -->
 
-  <div class="content">
-    <!-- Album Cover -->
-    <div class="album-cover">
-      <img src="album-cover.JPG" alt="Album Cover" />
+    <div class="hero-content">
+      <img class="album-cover" src="album-cover.JPG" alt="Album Cover">
     </div>
+  </div>
 
-    <!-- Small Album Name -->
+  <!-- MAIN CONTENT (Scroll Below Hero) -->
+  <div class="main-content">
     <div class="album-name">PARISTHITI</div>
-
-    <!-- "Choose music service" Subheading -->
     <div class="choose-service">Choose music service</div>
 
-    <!-- White Box with Services -->
     <div class="streaming-box">
       <a href="https://music.apple.com" target="_blank" class="streaming-link">
         <div class="service-left">
@@ -203,5 +210,14 @@
       </a>
     </div>
   </div>
+
+  <script>
+    // Simple Parallax: Move hero-bg slightly on scroll
+    document.addEventListener("scroll", function () {
+      const scrollPosition = window.scrollY;
+      const heroBg = document.querySelector(".hero-bg");
+      heroBg.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+    });
+  </script>
 </body>
 </html>
