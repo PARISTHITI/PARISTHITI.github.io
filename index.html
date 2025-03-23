@@ -13,107 +13,87 @@
       font-family: Arial, sans-serif;
     }
 
+    /* Body with Blurred Background */
     body {
-      background: black;
-      overflow-x: hidden; /* No horizontal scroll */
-      margin: 0;
+      background: url("album-cover.jpg") center/cover no-repeat fixed;
       min-height: 100vh;
-    }
-
-    /* Hero Section (80% screen) with Blurred Parallax BG */
-    .hero-section {
       position: relative;
-      width: 100%;
-      height: 80vh; /* Occupies 80% of the screen height */
-      overflow: hidden;
+      overflow-y: auto;
     }
 
-    .hero-bg {
-      position: absolute;
+    /* Blurred Overlay */
+    body::before {
+      content: "";
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      /* Larger background to appear zoomed in */
-      background: url('album-cover.jpg') center/150% no-repeat;
+      background: inherit;
       filter: blur(20px) brightness(0.5);
-      transform: translateY(0);
-      transition: transform 0.1s linear;
       z-index: -1;
     }
 
-    .hero-content {
-      /* Center the album cover vertically & horizontally within the hero */
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .album-cover {
-      width: 300px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
-      z-index: 1;
-    }
-
-    /* The rest of the page content (below hero) */
-    .main-content {
-      position: relative;
-      width: 100%;
-      min-height: 20vh; /* Remaining 20% + scrollable area */
-      padding: 50px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: black; /* or any color you like */
-    }
-
-    /* Album Name & Subheading */
-    .album-name {
-      margin-top: 20px;
-      font-size: 1.5rem;
-      color: #ffffff;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
-      margin-bottom: 8px;
-    }
-    .choose-service {
-      font-size: 1.1rem;
-      color: #b3b3b3;
-      letter-spacing: 1px;
-      margin-bottom: 30px;
-    }
-
-    /* White Box with Services */
-    .streaming-box {
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Main Container */
+    .container {
+      /* White card that holds everything */
+      max-width: 500px;
       width: 90%;
-      max-width: 400px;
+      margin: 5vh auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      text-align: center;
+    }
+
+    /* Album Cover */
+    .album-cover {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    /* Album Name */
+    .album-title {
+      font-size: 1.8rem;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    /* Choose Service */
+    .choose-service {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    /* Streaming Services Container */
+    .services {
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
 
-    /* Streaming Links */
-    .streaming-link {
+    /* Service Link Rows */
+    .service-link {
       display: flex;
       align-items: center;
-      background: #f5f5f5;
+      justify-content: space-between;
+      text-decoration: none;
+      background: #f7f7f7;
       padding: 12px;
       border-radius: 8px;
-      text-decoration: none;
-      color: black;
-      font-size: 18px;
-      transition: 0.3s ease-in-out;
-      justify-content: space-between;
+      transition: background 0.3s ease-in-out;
+      color: #333;
+    }
+
+    .service-link:hover {
+      background: #e5e5e5;
     }
 
     .service-left {
@@ -124,20 +104,20 @@
     .service-left img {
       width: 30px;
       height: 30px;
-      margin-right: 12px;
+      margin-right: 10px;
     }
 
     .service-left span {
+      font-size: 1.1rem;
       font-weight: 600;
       text-transform: capitalize;
     }
 
-    /* Monochrome Play Button */
     .play-button {
       background-color: #ccc; /* Light grey */
       color: #333;           /* Darker grey text */
       text-transform: uppercase;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 5px;
       font-weight: bold;
       font-size: 0.8em;
@@ -149,75 +129,68 @@
       background-color: #bbb; /* Slightly darker grey on hover */
     }
 
-    .streaming-link:hover {
-      background: #ddd;
-    }
-
     /* Responsive Adjustments */
-    @media screen and (max-width: 768px) {
+    @media (max-width: 480px) {
+      .container {
+        margin: 5vh auto;
+        width: 95%;
+      }
+
       .album-cover {
-        width: 250px;
+        width: 180px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- HERO SECTION (80% screen) -->
-  <div class="hero-section">
-    <div class="hero-bg"></div> <!-- Blurred, bigger BG -->
+  <div class="container">
+    <!-- Album Cover -->
+    <img 
+      class="album-cover" 
+      src="album-cover.jpg" 
+      alt="Album Cover" 
+    />
 
-    <div class="hero-content">
-      <img class="album-cover" src="album-cover.jpg" alt="Album Cover">
-    </div>
-  </div>
+    <!-- Album Name -->
+    <h2 class="album-title">PARISTHITI</h2>
 
-  <!-- MAIN CONTENT (Scroll Below Hero) -->
-  <div class="main-content">
-    <div class="album-name">PARISTHITI</div>
-    <div class="choose-service">Choose music service</div>
+    <!-- "Choose music service" -->
+    <p class="choose-service">Choose music service</p>
 
-    <div class="streaming-box">
-      <a href="https://music.apple.com" target="_blank" class="streaming-link">
+    <!-- Streaming Services -->
+    <div class="services">
+      <a href="https://music.apple.com" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="apple-music-logo.jpeg" alt="Apple Music" />
+          <img src="apple-music-logo.jpeg" alt="Apple Music">
           <span>Apple Music</span>
         </div>
         <div class="play-button">Play</div>
       </a>
 
-      <a href="https://spotify.com" target="_blank" class="streaming-link">
+      <a href="https://spotify.com" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="Spottify-logo.jpeg" alt="Spotify" />
+          <img src="Spottify-logo.jpeg" alt="Spotify">
           <span>Spotify</span>
         </div>
         <div class="play-button">Play</div>
       </a>
 
-      <a href="https://audiomack.com" target="_blank" class="streaming-link">
+      <a href="https://audiomack.com" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="audiomack-logo.jpg" alt="Audiomack" />
+          <img src="audiomack-logo.jpg" alt="Audiomack">
           <span>Audiomack</span>
         </div>
         <div class="play-button">Play</div>
       </a>
 
-      <a href="https://amazon.com/music" target="_blank" class="streaming-link">
+      <a href="https://amazon.com/music" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="amazon-music.png" alt="Amazon Music" />
+          <img src="amazon-music.png" alt="Amazon Music">
           <span>Amazon Music</span>
         </div>
         <div class="play-button">Play</div>
       </a>
     </div>
   </div>
-
-  <script>
-    // Simple Parallax: Move hero-bg slightly on scroll
-    document.addEventListener("scroll", function () {
-      const scrollPosition = window.scrollY;
-      const heroBg = document.querySelector(".hero-bg");
-      heroBg.style.transform = `translateY(${scrollPosition * 0.3}px)`;
-    });
-  </script>
 </body>
 </html>
