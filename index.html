@@ -3,36 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PARISTHITI - Choose Music Service</title>
+    <title>PARISTHITI</title>
     <style>
-        /* General Reset */
-        * {
+        /* Background styling */
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            color: white;
+            text-align: center;
             font-family: Arial, sans-serif;
         }
 
-        /* Background Blur */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('background.jpg') no-repeat center center/cover;
-            filter: blur(10px);
-            z-index: -1;
-        }
-
-        /* Main Container */
-        .main-container {
+        /* Main container */
+        .container {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            padding-top: 50px;
         }
 
         /* Album Cover */
@@ -40,122 +31,109 @@
             width: 150px;
             height: 150px;
             border-radius: 10px;
-            transition: transform 0.2s ease-in-out;
-        }
-        .album-link:hover .album-cover {
-            transform: scale(1.05);
+            cursor: pointer;
         }
 
-        /* Title & Subtitle */
-        .title {
-            font-size: 28px;
-            font-weight: bold;
+        /* Title and subtext */
+        h1 {
             color: white;
-            margin-top: 15px;
+            margin-top: 10px;
+            font-size: 2em;
         }
-        .subtitle {
-            font-size: 16px;
+
+        .subtext {
             color: white;
+            font-size: 1em;
             margin-bottom: 20px;
         }
 
-        /* White Box */
-        .service-box {
+        /* Music Service Box */
+        .music-box {
             background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
-            width: 350px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+            margin: 0 auto;
         }
 
-        /* Music Service Buttons */
-        .service-btn {
+        .music-link {
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            background: white;
-            border: none;
+            width: 90%;
             border-radius: 10px;
-            font-size: 16px;
+            text-decoration: none;
+            color: black;
             font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s ease-in-out;
         }
 
-        .service-btn img {
+        .music-link img {
             width: 20px;
             height: 20px;
             margin-right: 10px;
         }
 
-        .service-btn span {
-            background: lightgray;
+        /* Play button */
+        button {
+            background: #ccc;
+            border: none;
             padding: 5px 10px;
             border-radius: 5px;
-            font-size: 12px;
+            cursor: pointer;
         }
 
-        /* Button Hover Effects */
-        .service-btn:hover {
-            background: #f0f0f0;
+        button:hover {
+            background: #bbb;
         }
 
-        /* Quote */
+        /* Quote styling */
         .quote {
-            font-size: 14px;
-            color: white;
             margin-top: 20px;
-            max-width: 500px;
-            text-align: center;
+            font-size: 1em;
+            color: white;
+            font-style: italic;
+            width: 80%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 <body>
-
-    <!-- Background Blur Layer -->
-    <div class="background"></div>
-
-    <!-- Main Content -->
-    <div class="main-container">
-        <!-- Clickable Album Cover -->
-        <a href="https://www.youtube.com/your-album-link" target="_blank" class="album-link">
-            <img src="album-cover.jpg" alt="PARISTHITI Album Cover" class="album-cover">
+    <div class="container">
+        <!-- Album Cover with YouTube link -->
+        <a href="https://www.youtube.com/YOUR_ALBUM_LINK" target="_blank">
+            <img src="album-cover.jpg" alt="Album Cover" class="album-cover">
         </a>
 
-        <!-- Title & Subtitle -->
-        <h1 class="title">PARISTHITI</h1>
-        <p class="subtitle">Choose Music Service</p>
+        <!-- Title and Subtitle -->
+        <h1>PARISTHITI</h1>
+        <p class="subtext">Choose music service</p>
 
-        <!-- White Box with Music Services -->
-        <div class="service-box">
-            <button class="service-btn">
-                <img src="apple-music-logo.jpeg" alt="Apple Music"> Apple Music
-                <span>PLAY</span>
-            </button>
-            <button class="service-btn">
-                <img src="spotify-logo.jpeg" alt="Spotify"> Spotify
-                <span>PLAY</span>
-            </button>
-            <button class="service-btn">
-                <img src="audiomack-logo.jpg" alt="Audiomack"> Audiomack
-                <span>PLAY</span>
-            </button>
-            <button class="service-btn">
-                <img src="amazon-music.png" alt="Amazon Music"> Amazon Music
-                <span>PLAY</span>
-            </button>
+        <!-- Music Service Box -->
+        <div class="music-box">
+            <a href="https://music.apple.com" class="music-link">
+                <img src="apple-music-icon.png" alt="Apple Music"> Apple Music <button>PLAY</button>
+            </a>
+            <a href="https://spotify.com" class="music-link">
+                <img src="spotify-icon.png" alt="Spotify"> Spotify <button>PLAY</button>
+            </a>
+            <a href="https://audiomack.com" class="music-link">
+                <img src="audiomack-icon.png" alt="Audiomack"> Audiomack <button>PLAY</button>
+            </a>
+            <a href="https://music.amazon.com" class="music-link">
+                <img src="amazon-music-icon.png" alt="Amazon Music"> Amazon Music <button>PLAY</button>
+            </a>
         </div>
 
         <!-- Quote -->
-        <p class="quote">
-            “ Dreams are only made for those who are privileged enough to make them a reality,  
-            and ‘ privilege ‘ be it inherited or not, is to be achieved by ourselves! “  
-            <br>~ Ozui
-        </p>
+        <p class="quote">“Dreams are only made for those who are privileged enough to make them a reality, and ‘privilege’ be it inherited or not, is to be achieved by ourselves!” <br> ~ RAJA</p>
     </div>
-
 </body>
 </html>
