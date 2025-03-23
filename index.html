@@ -30,7 +30,6 @@
       width: 100%;
       height: 100%;
       background: url("album-cover.jpg") center/cover no-repeat fixed;
-      /* Blur + brightness + scale to remove any edges */
       filter: blur(20px) brightness(0.5);
       transform: scale(1.2);
       z-index: -1; 
@@ -46,19 +45,20 @@
       align-items: center;
     }
 
-    /* Album Cover (above white box) */
+    /* Album Cover (clickable to YouTube) */
     .album-cover {
       width: 220px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       margin-bottom: 20px;
+      cursor: pointer;
     }
 
     /* Album Title */
     .album-title {
       font-size: 1.8rem;
-      color: #333;
+      color: #ffffff; /* White text */
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 5px;
@@ -68,21 +68,24 @@
     /* Subheading */
     .choose-service {
       font-size: 1rem;
-      color: #666;
+      color: #ffffff; /* White text */
       margin-bottom: 25px;
       text-align: center;
     }
 
-    /* White Box with Services */
+    /* White Box with Services (Square and slightly bigger) */
     .streaming-box {
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      width: 100%;
+      width: 420px;   /* Slightly bigger width */
+      height: 420px;  /* Making it square */
       display: flex;
       flex-direction: column;
       gap: 15px;
+      padding: 20px;
+      justify-content: center; /* Center links vertically */
+      align-items: stretch;
     }
 
     /* Service Link Rows */
@@ -144,21 +147,30 @@
       .album-title {
         font-size: 1.4rem;
       }
+      .streaming-box {
+        width: 90%;
+        height: auto; /* Let it expand on small screens if needed */
+      }
     }
   </style>
 </head>
 <body>
   <div class="main-container">
-    <!-- Album Cover & Title Above the White Box -->
-    <img class="album-cover" src="album-cover.jpg" alt="Album Cover" />
+    <!-- Album Cover (clickable) -->
+    <img 
+      class="album-cover" 
+      src="album-cover.jpg" 
+      alt="Album Cover"
+      onclick="window.open('https://youtube.com', '_blank')" 
+    />
+
     <h2 class="album-title">PARISTHITI</h2>
     <p class="choose-service">Choose music service</p>
 
-    <!-- White Box with streaming links -->
     <div class="streaming-box">
       <a href="https://music.apple.com" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="apple-music-logo.jpeg" alt="Apple Music">
+          <img src="apple-music-logo.jpeg" alt="Apple Music" />
           <span>Apple Music</span>
         </div>
         <div class="play-button">Play</div>
@@ -166,7 +178,7 @@
 
       <a href="https://spotify.com" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="Spottify-logo.jpeg" alt="Spotify">
+          <img src="Spottify-logo.jpeg" alt="Spotify" />
           <span>Spotify</span>
         </div>
         <div class="play-button">Play</div>
@@ -174,7 +186,7 @@
 
       <a href="https://audiomack.com" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="audiomack-logo.jpg" alt="Audiomack">
+          <img src="audiomack-logo.jpg" alt="Audiomack" />
           <span>Audiomack</span>
         </div>
         <div class="play-button">Play</div>
@@ -182,7 +194,7 @@
 
       <a href="https://amazon.com/music" target="_blank" class="service-link">
         <div class="service-left">
-          <img src="amazon-music.png" alt="Amazon Music">
+          <img src="amazon-music.png" alt="Amazon Music" />
           <span>Amazon Music</span>
         </div>
         <div class="play-button">Play</div>
