@@ -13,15 +13,15 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Body with Blurred Background */
+    /* Body with a black fallback & fixed background image */
     body {
-      background: url("album-cover.jpg") center/cover no-repeat fixed;
+      background: black;
       min-height: 100vh;
       position: relative;
       overflow-y: auto;
     }
 
-    /* Blurred Overlay */
+    /* Fully Blurred Background */
     body::before {
       content: "";
       position: fixed;
@@ -29,51 +29,57 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: inherit;
+      background: url("album-cover.jpg") center/cover no-repeat fixed;
+      /* Blur + brightness + scale to remove any edges */
       filter: blur(20px) brightness(0.5);
-      z-index: -1;
+      transform: scale(1.2);
+      z-index: -1; 
     }
 
-    /* Main Container */
-    .container {
-      /* White card that holds everything */
-      max-width: 500px;
+    /* Main Container for alignment */
+    .main-container {
+      max-width: 600px;
       width: 90%;
       margin: 5vh auto;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      padding: 30px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Album Cover */
+    /* Album Cover (above white box) */
     .album-cover {
-      width: 200px;
+      width: 220px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       margin-bottom: 20px;
     }
 
-    /* Album Name */
+    /* Album Title */
     .album-title {
       font-size: 1.8rem;
       color: #333;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 5px;
+      text-align: center;
     }
 
-    /* Choose Service */
+    /* Subheading */
     .choose-service {
       font-size: 1rem;
       color: #666;
       margin-bottom: 25px;
+      text-align: center;
     }
 
-    /* Streaming Services Container */
-    .services {
+    /* White Box with Services */
+    .streaming-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -85,7 +91,7 @@
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
-      background: #f7f7f7;
+      background: #f5f5f5;
       padding: 12px;
       border-radius: 8px;
       transition: background 0.3s ease-in-out;
@@ -113,6 +119,7 @@
       text-transform: capitalize;
     }
 
+    /* Monochrome Play Button */
     .play-button {
       background-color: #ccc; /* Light grey */
       color: #333;           /* Darker grey text */
@@ -126,39 +133,29 @@
     }
 
     .play-button:hover {
-      background-color: #bbb; /* Slightly darker grey on hover */
+      background-color: #bbb;
     }
 
-    /* Responsive Adjustments */
+    /* Responsive */
     @media (max-width: 480px) {
-      .container {
-        margin: 5vh auto;
-        width: 95%;
-      }
-
       .album-cover {
         width: 180px;
+      }
+      .album-title {
+        font-size: 1.4rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Album Cover -->
-    <img 
-      class="album-cover" 
-      src="album-cover.jpg" 
-      alt="Album Cover" 
-    />
-
-    <!-- Album Name -->
+  <div class="main-container">
+    <!-- Album Cover & Title Above the White Box -->
+    <img class="album-cover" src="album-cover.jpg" alt="Album Cover" />
     <h2 class="album-title">PARISTHITI</h2>
-
-    <!-- "Choose music service" -->
     <p class="choose-service">Choose music service</p>
 
-    <!-- Streaming Services -->
-    <div class="services">
+    <!-- White Box with streaming links -->
+    <div class="streaming-box">
       <a href="https://music.apple.com" target="_blank" class="service-link">
         <div class="service-left">
           <img src="apple-music-logo.jpeg" alt="Apple Music">
