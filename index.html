@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Album | Paristhiti</title>
   <style>
-    /* Reset and Global Styles */
     * {
       margin: 0;
       padding: 0;
@@ -13,7 +12,6 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Body with a black fallback & fixed background image */
     body {
       background: black;
       min-height: 100vh;
@@ -21,7 +19,6 @@
       overflow-y: auto;
     }
 
-    /* Fully Blurred Background */
     body::before {
       content: "";
       position: fixed;
@@ -35,7 +32,6 @@
       z-index: -1; 
     }
 
-    /* Main Container for alignment */
     .main-container {
       max-width: 600px;
       width: 90%;
@@ -45,41 +41,58 @@
       align-items: center;
     }
 
-    /* Album Cover (clickable) */
+    .album-cover-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
     .album-cover {
       width: 220px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       margin-bottom: 20px;
-      cursor: pointer;
     }
 
-    /* Album Title */
+    .youtube-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      transform: translate(-50%, -50%);
+      opacity: 0.8;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .album-cover-container:hover .youtube-icon {
+      opacity: 1;
+    }
+
     .album-title {
       font-size: 1.8rem;
-      color: #ffffff; /* White text */
+      color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 5px;
       text-align: center;
     }
 
-    /* Subheading */
     .choose-service {
       font-size: 1rem;
-      color: #ffffff; /* White text */
+      color: #ffffff;
       margin-bottom: 25px;
       text-align: center;
     }
 
-    /* White Box with Services */
     .streaming-box {
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      width: 420px;   
-      height: 420px;  
+      width: 420px;
+      height: 420px;
       display: flex;
       flex-direction: column;
       padding: 20px;
@@ -88,7 +101,6 @@
       gap: 0;
     }
 
-    /* Service Link Rows */
     .service-link {
       display: flex;
       align-items: center;
@@ -123,7 +135,6 @@
       text-transform: capitalize;
     }
 
-    /* Monochrome Play Button */
     .play-button {
       background-color: #ccc;
       color: #333;
@@ -140,7 +151,6 @@
       background-color: #bbb;
     }
 
-    /* Quote Styling */
     .quote {
       margin-top: 20px;
       font-size: 1.2rem;
@@ -150,7 +160,6 @@
       max-width: 80%;
     }
 
-    /* Responsive */
     @media (max-width: 480px) {
       .album-cover {
         width: 180px;
@@ -186,13 +195,19 @@
 </head>
 <body>
   <div class="main-container">
-    <!-- Album Cover (clickable) -->
-    <img 
-      class="album-cover" 
-      src="Album cover final.jpg" 
-      alt="Album Cover"
-      onclick="window.open('https://www.youtube.com/@KAUSHAL.G.K', '_blank')" 
-    />
+    <!-- Album Cover with YouTube Icon Overlay -->
+    <div class="album-cover-container" onclick="window.open('https://www.youtube.com/@KAUSHAL.G.K', '_blank')">
+      <img 
+        class="album-cover" 
+        src="Album cover final.jpg" 
+        alt="Album Cover"
+      />
+      <img 
+        class="youtube-icon" 
+        src="youtube-icon.png" 
+        alt="YouTube"
+      />
+    </div>
 
     <h2 class="album-title">PARISTHITI</h2>
     <p class="choose-service">Choose music service</p>
@@ -230,5 +245,6 @@
         <div class="play-button">Play</div>
       </a>
     </div>
+  </div>
 </body>
 </html>
